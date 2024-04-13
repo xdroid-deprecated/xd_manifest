@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- xdroidOSS -->
+  <remote  name="xd"
+           fetch="https://github.com/xdroid-oss"
+           revision="fourteen" />
+
+  <remote  name="xd-gitlab"
+           fetch="https://gitlab.com/xdroid-oss"
+           revision="fourteen" />
+
+  <remote  name="xd-devices"
+           fetch="https://github.com/xdroid-devices"
+           revision="fourteen" />
+
+  <project path="art" name="xd_art" remote="xd" />
+  <project path="bionic" name="xd_bionic" groups="pdk" remote="xd" />
+  <project path="bootable/recovery" name="xd_bootable_recovery" groups="pdk" remote="xd" />
+  <project path="manifest" name="xd_manifest" remote="xd" />
+
+  <!-- Build -->
+  <project path="build/make" name="xd_build" remote="xd">
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="xd_build_soong" remote="xd">
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+
+  <!-- Device -->
+  <project path="device/xdroid/sepolicy" name="xd_device_xdroid_sepolicy" remote="xd" />
+  <project path="device/qcom/sepolicy_vndr/sm6225" name="xd_device_qcom_sepolicy_vndr" remote="xd" />
+
+  <!-- Frameworks -->
+  <project path="frameworks/av" name="xd_frameworks_av" remote="xd" />
+  <project path="frameworks/base" name="xd_frameworks_base" remote="xd" />
+  <project path="frameworks/native" name="xd_frameworks_native" remote="xd" />
+  <project path="frameworks/opt/calendar" name="xd_frameworks_opt_calendar" remote="xd" />
+  <project path="frameworks/opt/telephony" name="xd_frameworks_opt_telephony" remote="xd" />
+  <project path="frameworks/opt/timezonepicker" name="xd_frameworks_opt_timezonepicker" remote="xd" />
+
+  <!-- Hardware -->
+  <project path="hardware/lineage/interfaces" name="xd_hardware_lineage_interfaces" remote="xd" />
+  <project path="hardware/qcom-caf/common" name="xd_hardware_qcom-caf_common" remote="xd" >
+    <!-- Add guard for AOSP hardware/qcom dir -->
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <!-- Add guards for CLO repositories -->
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8953/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8996/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8996/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8998/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8998/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm6225/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm6225/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm6225/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm660/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm845/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm845/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8150/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8350/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="vendor/nxp/opensource/pn5xx/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="vendor/nxp/opensource/pn5xx/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="vendor/nxp/opensource/sn100x/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="vendor/nxp/opensource/sn100x/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="kernel/google/gs101/private/google-modules/Android.bp" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8450/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8450/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8550/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8550/Android.mk" />
+    <!-- add guards for Pixel kernel modules -->
+    <linkfile src="os_pickup.bp" dest="kernel/google/gs201/private/google-modules/Android.bp" />
+  </project>
+  <project path="hardware/qcom-caf/sm6225/audio/agm" name="xd_vendor_qcom_opensource_agm" remote="xd" />
+  <project path="hardware/qcom-caf/sm6225/audio/pal" name="xd_vendor_qcom_opensource_arpal-lx" remote="xd" />
+  <project path="hardware/qcom-caf/sm6225/audio/primary-hal" name="xd_hardware_qcom_audio" remote="xd" />
+  <project path="hardware/qcom-caf/sm6225/data-ipa-cfg-mgr" name="xd_vendor_qcom_opensource_data-ipa-cfg-mgr" remote="xd" />
+  <project path="hardware/qcom-caf/sm6225/dataipa" name="xd_vendor_qcom_opensource_dataipa" remote="xd" />
+  <project path="hardware/qcom-caf/sm6225/display" name="xd_hardware_qcom_display" remote="xd" />
+  <project path="hardware/qcom-caf/sm6225/media" name="xd_hardware_qcom_media" remote="xd" />
+
+  <!-- Packages -->
+  <project path="packages/apps/Nfc" name="xd_packages_apps_Nfc" remote="xd" />
+  <project path="packages/apps/ParanoidSense" name="xd_packages_apps_ParanoidSense" remote="xd" />
+  <project path="packages/apps/Settings" name="xd_packages_apps_Settings" remote="xd" />
+  <project path="packages/modules/Bluetooth" name="xd_packages_modules_Bluetooth" remote="xd" />
+  <project path="packages/modules/Wifi" name="xd_packages_modules_Wifi" remote="xd" />
+  <project path="packages/services/Telecomm" name="xd_packages_services_Telecomm" remote="xd" />
+
+  <!-- System -->
+  <project path="system/core" name="xd_system_core" remote="xd" />
+  <project path="system/sepolicy" name="xd_system_sepolicy" remote="xd" />
+  <project path="system/update_engine" name="xd_system_update_engine" remote="xd" />
+
+  <!-- Vendor -->
+  <project path="vendor/xdroid" name="xd_vendor_xdroid" remote="xd" />
+
+</manifest>
