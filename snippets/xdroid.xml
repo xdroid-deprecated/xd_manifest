@@ -95,6 +95,7 @@
   <project path="hardware/qcom-caf/sm6225/media" name="xd_hardware_qcom_media" remote="xd" />
 
   <!-- Packages -->
+  <project path="packages/apps/EmergencyInfo" name="xd_packages_apps_EmergencyInfo" remote="xd" />
   <project path="packages/apps/Nfc" name="xd_packages_apps_Nfc" remote="xd" />
   <project path="packages/apps/ParanoidSense" name="xd_packages_apps_ParanoidSense" remote="xd" />
   <project path="packages/apps/Settings" name="xd_packages_apps_Settings" remote="xd" />
