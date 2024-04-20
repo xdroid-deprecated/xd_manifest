@@ -10,6 +10,10 @@
            fetch="https://gitlab.com/xdroid-oss"
            revision="fourteen" />
 
+  <remote  name="xyzuan"
+           fetch="https://gitlab.com/xyzuan"
+           revision="fourteen" />
+
   <remote  name="xd-devices"
            fetch="https://github.com/xdroid-devices"
            revision="fourteen" />
@@ -110,5 +114,7 @@
 
   <!-- Vendor -->
   <project path="vendor/xdroid" name="xd_vendor_xdroid" remote="xd" />
+  <project path="vendor/xdroidui" name="xd_vendor_xdroidui" remote="xd" />
+  <project path="vendor/gms" name="xd_vendor_gms" remote="xyzuan" />
 
 </manifest>
